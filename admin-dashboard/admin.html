@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f0f4f8; color: #333; }
+
+    /* Header */
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 40px; background: #0055cc; color: #fff; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 26px; }
+    header nav a { margin-left: 25px; color: #fff; font-weight: 500; transition: 0.3s;text-decoration: none; }
+    header nav a:hover { color: #ffdd57; }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed; top: 60px; left: 0; width: 220px; height: calc(100% - 60px);
+        background: #fff; border-right: 1px solid #ddd; padding: 30px 20px;
+    }
+    .sidebar h2 { font-size: 16px; margin-bottom: 20px; color: #555; font-weight: 600; }
+    .sidebar a { display: block; padding: 12px 10px; margin-bottom: 8px; color: #333; border-radius: 8px;
+                 transition: 0.3s; font-weight: 700;text-decoration: none; }
+    .sidebar a:hover { background: #0055cc; color: #fff; }
+
+    /* Main Content */
+    .main {
+        margin-left: 240px; padding: 30px;
+    }
+    .dashboard-title { font-size: 28px; font-weight: 700; margin-bottom: 20px; color: #222; }
+
+    /* Stats Cards */
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-bottom: 40px; }
+    .card {
+        background: #fff; border-radius: 16px; padding: 25px; 
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1); transition: 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
+    .card h3 { font-family: 'Poppins', sans-serif; font-weight: 600; margin-bottom: 10px; color: #333; }
+    .card p { font-size: 24px; font-weight: 700; color: #0055cc; }
+
+    /* Charts Placeholder */
+    .chart-placeholder {
+        height: 200px; background: #e5e9f2; border-radius: 12px; display: flex;
+        align-items: center; justify-content: center; color: #777; font-weight: 600; font-size: 18px;
+    }
+
+    /* Recent Events Table */
+    table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; }
+    th, td { text-align: left; padding: 15px; }
+    th { background: #0055cc; color: #fff; font-weight: 600; }
+    tr:nth-child(even) { background: #f5f7fa; }
+    tr:hover { background: #e0e7ff; }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px 0; margin-top: 40px; color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Manager</h1>
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Events</a>
+        <a href="#">Logout</a>
+    </nav>
+</header>
+
+<div class="sidebar">
+    <a href="#">📊 Dashboard</a>
+    <a href="#">📅 Events</a>
+    <a href="#">👥 Users</a>
+    <a href="#">🎓 Certificates</a>
+    <a href="#">📑 Reports</a>
+    <a href="#">⚙ Settings</a>
+</div>
+
+<div class="main">
+    <div class="dashboard-title">Admin Dashboard</div>
+
+    <div class="stats">
+        <div class="card">
+            <h3>Events</h3>
+            <p>15</p>
+        </div>
+        <div class="card">
+            <h3>Users</h3>
+            <p>230</p>
+        </div>
+        <div class="card">
+            <h3>Certificates</h3>
+            <p>120</p>
+        </div>
+        <div class="card">
+            <h3>Feedbacks</h3>
+            <p>45</p>
+        </div>
+    </div>
+
+    <div class="chart-placeholder">[Charts Placeholder]</div>
+
+    <h2 style="margin:30px 0 15px 0; color:#222;">Recent Events</h2>
+    <table>
+        <tr>
+            <th>Event</th>
+            <th>Registrations</th>
+            <th>Date</th>
+        </tr>
+        <tr>
+            <td>TechFest 2025</td>
+            <td>150</td>
+            <td>15 Mar</td>
+        </tr>
+        <tr>
+            <td>Guest Lecture</td>
+            <td>90</td>
+            <td>20 Mar</td>
+        </tr>
+        <tr>
+            <td>Hackathon</td>
+            <td>200</td>
+            <td>25 Mar</td>
+        </tr>
+    </table>
+</div>
+
+<footer>
+    © 2025 College Event Manager | Privacy | Terms
+</footer>
+
+</body>
+</html>
