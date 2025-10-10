@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    /* Global CSS */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: linear-gradient(135deg, #cb4f11, #2575fc); color: #333; }
+    a { text-decoration: none; color: inherit; }
+    button { cursor: pointer; font-family: 'Poppins', sans-serif; }
+
+    /* Header */
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 20px 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; margin: 20px 50px;
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: #fff; }
+    header nav a { margin-left: 25px; color: #fff; font-weight: 500; transition: 0.3s; }
+    header nav a:hover { color: #ffdd57; }
+
+    /* Buttons */
+    .btn { padding: 10px 25px; border: none; border-radius: 12px; font-weight: 600;
+        background: linear-gradient(135deg, #ff6a00, #ee0979); color: #fff;
+        transition: 0.3s; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
+
+    /* Hero Section */
+    .hero { text-align: center; padding: 100px 50px; color: #fff; }
+    .hero h2 { font-size: 42px; margin-bottom: 20px; text-shadow: 1px 1px 10px rgba(0,0,0,0.3); }
+    .hero p { font-size: 18px; margin-bottom: 40px; }
+
+    /* Event Cards Grid */
+    .events { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 50px; }
+    .card {
+        background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.25); }
+    .card h3 { font-family: 'Poppins', sans-serif; color: #333; margin-bottom: 10px; }
+    .card p { font-size: 14px; color: #666; margin-bottom: 15px; }
+    .card .actions { display: flex; justify-content: space-between; align-items: center; }
+    .card .actions button { flex: 1; margin-right: 10px; }
+    .card .actions button:last-child { margin-right: 0; }
+
+    /* Footer */
+    footer { text-align: center; padding: 30px 0; background: rgba(255,255,255,0.1); color: #fff; margin-top: 50px; border-radius: 12px 12px 0 0; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Manager</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Login</a>
+        <a href="#">Sign Up</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Plan • Run • Report — All College Events</h2>
+    <p>Online registration, real-time tracking, QR check-ins, certificates, feedback & reports — all in one platform.</p>
+    <button class="btn">JOIN</button>
+    <button class="btn">HOST</button>
+    <br>
+    <br>
+    <div><button class="btn">Explore Events</button></div>
+</section>
+
+<section class="events">
+    <div class="card">
+        <h3>TechFest 2026</h3>
+        <p>Date: 15th March | Venue: Main Auditorium</p>
+        <div class="actions">
+            <button class="btn">Register</button>
+            <button class="btn">Details</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Guest Lecture</h3>
+        <p>Date: 20th March | Venue: Conference Hall</p>
+        <div class="actions">
+            <button class="btn">Register</button>
+            <button class="btn">Details</button>
+        </div>
+    </div>
+    <div class="card">
+        <h3>Sports Meet</h3>
+        <p>Date: 25th March | Venue: Sports Ground</p>
+        <div class="actions">
+            <button class="btn">Register</button>
+            <button class="btn">Details</button>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2025 College Event Manager | Privacy | Terms
+</footer>
+
+</body>
+</html>
