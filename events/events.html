@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events - College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f0f4f8; color: #333; }
+
+    /* Header */
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 40px; background: #0055cc; color: #fff; 
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 26px; }
+    header nav a {
+        margin-left: 25px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        transition: 0.3s;
+    }
+    header nav a:hover { color: #ffdd57; }
+
+    /* Main Section */
+    .main {
+        padding: 40px 60px;
+    }
+
+    .page-title {
+        font-size: 32px;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        color: #222;
+        margin-bottom: 25px;
+    }
+
+    /* Events Grid */
+    .events-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+
+    .event-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 25px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+    }
+
+    .event-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #0055cc;
+    }
+
+    .event-date {
+        font-weight: 600;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    .event-desc {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 15px;
+        line-height: 1.5;
+    }
+
+    .join-btn {
+        background: #0055cc;
+        color: #fff;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: 0.3s;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .join-btn:hover {
+        background: #003d99;
+        transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer { text-align: center; padding: 20px 0; margin-top: 40px; color: #555; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Manager</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">My Events</a>
+        <a href="#">Logout</a>
+    </nav>
+</header>
+
+<div class="main">
+    <div class="page-title">Upcoming Events</div>
+
+    <div class="events-grid">
+        <div class="event-card">
+            <div class="event-title">TechFest 2025</div>
+            <div class="event-date">📅 15 March 2025</div>
+            <div class="event-desc">Join the biggest inter-college tech festival featuring hackathons, robotics, and coding battles!</div>
+            <a href="#" class="join-btn">Join Event</a>
+        </div>
+
+        <div class="event-card">
+            <div class="event-title">Guest Lecture: AI in Future</div>
+            <div class="event-date">📅 20 March 2025</div>
+            <div class="event-desc">Listen to top industry experts share insights about Artificial Intelligence and innovation in technology.</div>
+            <a href="#" class="join-btn">Join Event</a>
+        </div>
+
+        <div class="event-card">
+            <div class="event-title">Hackathon 2025</div>
+            <div class="event-date">📅 25 March 2025</div>
+            <div class="event-desc">A 36-hour coding marathon to solve real-world problems and win exciting prizes!</div>
+            <a href="#" class="join-btn">Join Event</a>
+        </div>
+
+        <div class="event-card">
+            <div class="event-title">Cultural Fest</div>
+            <div class="event-date">📅 30 March 2025</div>
+            <div class="event-desc">Music, dance, and art! Show your creativity and represent your college in style.</div>
+            <a href="#" class="join-btn">Join Event</a>
+        </div>
+    </div>
+</div>
+
+<footer>
+    © 2025 College Event Manager | Contact | Privacy | Terms
+</footer>
+
+</body>
+</html>
