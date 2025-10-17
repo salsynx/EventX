@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Report Generator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #E0EAFC, #CFDEF3);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #1a237e;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    h2 {
+      color: #1a237e;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    select:focus, input:focus {
+      border-color: #1a237e;
+      box-shadow: 0 0 5px rgba(26,35,126,0.3);
+    }
+
+    button {
+      background: #1a237e;
+      color: white;
+      border: none;
+      padding: 14px 32px;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #303f9f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .report-preview {
+      margin-top: 30px;
+      border-top: 2px solid #eee;
+      padding-top: 20px;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #1a237e;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>Report Generator</header>
+
+  <div class="container">
+    <h2>Generate Participation / Event Reports</h2>
+
+    <div class="form-group">
+      <label for="event">Select Event</label>
+      <select id="event">
+        <option value="">Choose an event</option>
+        <option>Hackathon 2025</option>
+        <option>AI Workshop</option>
+        <option>Sports Meet</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="report-type">Report Type</label>
+      <select id="report-type">
+        <option value="">Select report type</option>
+        <option>Participation Summary</option>
+        <option>Attendance Report</option>
+        <option>Certificate Issued</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="format">Output Format</label>
+      <select id="format">
+        <option value="">Select format</option>
+        <option>PDF</option>
+        <option>Excel</option>
+        <option>CSV</option>
+      </select>
+    </div>
+
+    <button onclick="generateReport()">Generate Report</button>
+
+    <div class="report-preview" id="preview">
+      <p>No report generated yet.</p>
+    </div>
+  </div>
+
+  <footer>© 2025 Event Management Portal</footer>
+
+  <script>
+    function generateReport() {
+      const event = document.getElementById('event').value;
+      const type = document.getElementById('report-type').value;
+      const format = document.getElementById('format').value;
+      const preview = document.getElementById('preview');
+
+      if (!event || !type || !format) {
+        preview.innerHTML = "<p style='color:red;'>⚠️ Please select all fields before generating.</p>";
+      } else {
+        preview.innerHTML = `<p>✅ Report for <b>${event}</b> (${type}) generated in <b>${format}</b> format.</p>`;
+      }
+    }
+  </script>
+</body>
+</html>

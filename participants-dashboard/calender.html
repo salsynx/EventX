@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendar View</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;700&family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #cfd8dc);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #00695c;
+      color: white;
+      text-align: center;
+      padding: 30px 0;
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .calendar-container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .calendar-header h2 {
+      color: #00695c;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+    }
+
+    .nav-btn {
+      background: #00695c;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .nav-btn:hover {
+      background: #00897b;
+      transform: translateY(-2px);
+    }
+
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+    }
+
+    .day {
+      padding: 18px;
+      text-align: center;
+      border-radius: 10px;
+      background: #f1f1f1;
+      color: #333;
+      font-weight: 600;
+      transition: 0.3s;
+      position: relative;
+    }
+
+    .day:hover {
+      background: #00695c;
+      color: white;
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+
+    .event {
+      background: #ff8a65;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 12px;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    footer {
+      margin-top: auto;
+      text-align: center;
+      padding: 15px 0;
+      background-color: #00695c;
+      color: white;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>Calendar View</header>
+
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button class="nav-btn" onclick="prevMonth()">← Prev</button>
+      <h2 id="month-year">October 2025</h2>
+      <button class="nav-btn" onclick="nextMonth()">Next →</button>
+    </div>
+
+    <div class="calendar" id="calendar">
+      <!-- Days generated dynamically -->
+    </div>
+  </div>
+
+  <footer>© 2025 Event Management Portal</footer>
+
+  <script>
+    const calendar = document.getElementById("calendar");
+    const monthYear = document.getElementById("month-year");
+    const events = { 5: "Hackathon", 12: "Workshop", 22: "Sports Meet" };
+
+    const date = new Date();
+    let currentMonth = date.getMonth();
+    let currentYear = date.getFullYear();
+
+    function renderCalendar() {
+      calendar.innerHTML = "";
+      const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      monthYear.textContent = new Date(currentYear, currentMonth)
+        .toLocaleString("default", { month: "long", year: "numeric" });
+
+      for (let i = 0; i < firstDay; i++) {
+        const empty = document.createElement("div");
+        calendar.appendChild(empty);
+      }
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("day");
+        dayDiv.textContent = i;
+
+        if (events[i]) {
+          const eventDiv = document.createElement("div");
+          eventDiv.classList.add("event");
+          eventDiv.textContent = events[i];
+          dayDiv.appendChild(eventDiv);
+        }
+
+        calendar.appendChild(dayDiv);
+      }
+    }
+
+    function prevMonth() {
+      currentMonth--;
+      if (currentMonth < 0) {
+        currentMonth = 11;
+        currentYear--;
+      }
+      renderCalendar();
+    }
+
+    function nextMonth() {
+      currentMonth++;
+      if (currentMonth > 11) {
+        currentMonth = 0;
+        currentYear++;
+      }
+      renderCalendar();
+    }
+
+    renderCalendar();
+  </script>
+</body>
+</html>
