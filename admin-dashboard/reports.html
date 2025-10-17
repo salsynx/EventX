@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events - College Event Manager</title>
+<title>Reports - College Event Manager</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
@@ -29,41 +29,57 @@
                  transition: 0.3s; font-weight: 700; text-decoration: none; }
     .sidebar a:hover, .sidebar a.active { background: #0055cc; color: #fff; }
 
-    /* Main Content */
+    /* Main */
     .main {
         margin-left: 240px; padding: 40px;
     }
     .main h2 { font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; margin-bottom: 25px; color: #222; }
 
-    /* Stats Grid */
-    .stats {
-        display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
+    /* Report Cards */
+    .report-section {
+        margin-bottom: 40px;
     }
-    .stat-card {
-        background: #fff; border-radius: 16px; padding: 30px;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.1); transition: 0.3s ease;
-    }
-    .stat-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 28px rgba(0,0,0,0.15);
-    }
-    .stat-card h3 {
+    .report-section h3 {
         font-family: 'Poppins', sans-serif;
-        font-weight: 600;
-        margin-bottom: 10px;
+        font-size: 22px;
+        margin-bottom: 20px;
         color: #333;
-    }
-    .stat-card p {
-        font-size: 28px;
-        font-weight: 700;
-        color: #0055cc;
+        border-left: 6px solid #0055cc;
+        padding-left: 12px;
     }
 
-    /* Color categories */
-    .upcoming { border-top: 6px solid #00b894; }
-    .ongoing { border-top: 6px solid #ffb142; }
-    .belated { border-top: 6px solid #d63031; }
+    .report-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
 
+    .report-table th, .report-table td {
+        text-align: left;
+        padding: 14px 18px;
+        border-bottom: 1px solid #eaeaea;
+    }
+    .report-table th {
+        background: #0055cc;
+        color: #fff;
+        font-weight: 600;
+    }
+    .report-table tr:hover td {
+        background: #f3f6fb;
+    }
+
+    /* Attendance log placeholder */
+    .attendance-log {
+        background: #fff;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        font-size: 15px;
+        color: #555;
+    }
 </style>
 </head>
 <body>
@@ -72,35 +88,59 @@
     <h1>College Event Manager</h1>
     <nav>
         <a href="dashboard.html">Dashboard</a>
-        <a href="events.html" class="active">Events</a>
-        <a href="#">Certificates</a>
-        <a href="#">Reports</a>
+        <a href="events.html">Events</a>
+        <a href="reports.html" class="active">Reports</a>
+        <a href="#">Settings</a>
     </nav>
 </header>
 
 <div class="sidebar">
     <h2>Menu</h2>
     <a href="admin.html">Dashboard</a>
-    <a href="event.html" class="active">Events</a>
-    <a href="#">Certificates</a>
-    <a href="#">Reports</a>
-    <a href="#">Settings</a>
+    <a href="event.html">Events</a>
+    <a href="reports.html" class="active">Reports</a>
+    <a href="admin-certificate.html">Certificates</a>
+    <a href="../profile/profile.html">Settings</a>
 </div>
 
 <div class="main">
-    <h2>Events Overview</h2>
-    <div class="stats">
-        <div class="stat-card upcoming">
-            <h3>Upcoming Events</h3>
-            <p id="upcomingCount">0</p>
-        </div>
-        <div class="stat-card ongoing">
-            <h3>Ongoing Events</h3>
-            <p id="ongoingCount">0</p>
-        </div>
-        <div class="stat-card belated">
-            <h3>Belated Events</h3>
-            <p id="belatedCount">0</p>
+    <h2>Event Reports Overview</h2>
+
+    <!-- Volunteers Section -->
+    <div class="report-section">
+        <h3>Volunteers per Event</h3>
+        <table class="report-table" id="volunteerTable">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>No. of Volunteers</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Participants Section -->
+    <div class="report-section">
+        <h3>Participants (Past / Present / Future)</h3>
+        <table class="report-table" id="participantsTable">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Past</th>
+                    <th>Present</th>
+                    <th>Future</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!-- Attendance Log -->
+    <div class="report-section">
+        <h3>Attendance Log</h3>
+        <div class="attendance-log" id="attendanceLog">
+            Loading attendance data...
         </div>
     </div>
 </div>
@@ -108,24 +148,49 @@
 <script>
     // Example event data
     const events = [
-        { name: 'Tech Fest', date: '2025-11-10' },
-        { name: 'Music Night', date: '2025-10-17' },
-        { name: 'Hackathon', date: '2025-09-30' },
-        { name: 'Cultural Meet', date: '2025-10-19' },
+        { name: "Tech Fest", date: "2025-11-10", volunteers: 15, participants: 100 },
+        { name: "Music Night", date: "2025-10-17", volunteers: 12, participants: 70 },
+        { name: "Hackathon", date: "2025-09-30", volunteers: 10, participants: 55 },
+        { name: "Cultural Meet", date: "2025-10-19", volunteers: 20, participants: 150 }
     ];
 
     const today = new Date().toISOString().split('T')[0];
-    let upcoming = 0, ongoing = 0, belated = 0;
 
-    events.forEach(event => {
-        if (event.date > today) upcoming++;
-        else if (event.date === today) ongoing++;
-        else belated++;
+    // Populate volunteers table
+    const volunteerTable = document.querySelector("#volunteerTable tbody");
+    events.forEach(e => {
+        const row = `<tr>
+            <td>${e.name}</td>
+            <td>${e.volunteers}</td>
+        </tr>`;
+        volunteerTable.insertAdjacentHTML("beforeend", row);
     });
 
-    document.getElementById('upcomingCount').textContent = upcoming;
-    document.getElementById('ongoingCount').textContent = ongoing;
-    document.getElementById('belatedCount').textContent = belated;
+    // Populate participants table
+    const participantsTable = document.querySelector("#participantsTable tbody");
+    events.forEach(e => {
+        let past = 0, present = 0, future = 0;
+        if (e.date < today) past = e.participants;
+        else if (e.date === today) present = e.participants;
+        else future = e.participants;
+
+        const row = `<tr>
+            <td>${e.name}</td>
+            <td>${past}</td>
+            <td>${present}</td>
+            <td>${future}</td>
+        </tr>`;
+        participantsTable.insertAdjacentHTML("beforeend", row);
+    });
+
+    // Attendance log example
+    document.getElementById("attendanceLog").innerHTML = `
+        <strong>Recent Attendance Summary:</strong><br><br>
+        ✅ Tech Fest — 92% attendance<br>
+        🎵 Music Night — 88% attendance<br>
+        💻 Hackathon — 95% attendance<br>
+        🎭 Cultural Meet — 91% attendance
+    `;
 </script>
 
 </body>

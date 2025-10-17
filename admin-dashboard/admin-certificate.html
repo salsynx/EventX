@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificates - College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: #f5f7fa; color: #333; }
+
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 15px 40px; background: #0055cc; color: #fff;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 24px; }
+
+    .sidebar {
+        width: 220px; background: #fff; height: calc(100vh - 60px); 
+        padding: 20px; position: fixed; top: 60px; left: 0; 
+        border-right: 1px solid #ddd; box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    }
+    .sidebar a {
+        display: block; padding: 12px 10px; margin-bottom: 10px;
+        color: #333; font-weight: 700; text-decoration: none; border-radius: 8px;
+        transition: 0.3s;
+    }
+    .sidebar a:hover { background: #0055cc; color: #fff; }
+
+    .main { margin-left: 240px; padding: 30px; }
+
+    .dashboard-header {
+        background: #fff; padding: 20px 30px; border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1); margin-bottom: 30px;
+    }
+    .dashboard-header h2 { font-family: 'Poppins', sans-serif; font-size: 26px; color: #222; font-weight: 700; }
+    .dashboard-header p { color: #555; margin-top: 5px; }
+
+    /* Certificate creation section */
+    .certificate-form {
+        background: #fff; padding: 25px; border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 40px;
+    }
+    .certificate-form input, .certificate-form select {
+        width: 100%; padding: 10px 12px; margin-bottom: 15px;
+        border: 1px solid #ccc; border-radius: 8px; font-size: 15px;
+    }
+    .btn-generate {
+        background: #00aa33; color: #fff; border: none;
+        padding: 12px 18px; border-radius: 8px;
+        font-weight: 700; cursor: pointer; transition: 0.3s;
+    }
+    .btn-generate:hover { background: #008828; }
+
+    /* Certificates table */
+    table {
+        width: 100%; border-collapse: collapse; background: #fff;
+        border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    table th, table td {
+        padding: 12px 15px; text-align: left;
+    }
+    table th {
+        background: #0055cc; color: #fff; font-weight: 700;
+    }
+    table tr:nth-child(even) { background: #f1f3f6; }
+    .btn-download {
+        background: #ff6600; color: #fff; border: none;
+        padding: 6px 12px; border-radius: 6px; cursor: pointer; transition: 0.3s;
+    }
+    .btn-download:hover { background: #cc5200; }
+
+    footer { text-align: center; padding: 20px 0; margin-top: 50px; font-size: 14px; color: #777; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>🎓 College Event Manager</h1>
+</header>
+
+<div class="sidebar">
+    <a href="admin.html">📊 Dashboard</a>
+    <a href="event.html">📅 Events</a>
+    <a href="#">👥 Users</a>
+    <a href="admin-certificate.html" style="background:#0055cc;color:#fff;">🎓 Certificates</a>
+    <a href="reports.html">📑 Reports</a>
+    <a href="../profile/profile.html">⚙ Settings</a>
+</div>
+
+<div class="main">
+    <div class="dashboard-header">
+        <h2>Certificate Generator</h2>
+        <p>Create and manage certificates for all participants</p>
+    </div>
+
+    <div class="certificate-form">
+        <h3 style="margin-bottom:15px;">Create Certificate</h3>
+        <form id="certForm">
+            <input type="text" placeholder="Participant Name" required>
+            <input type="text" placeholder="Event Name" required>
+            <select required>
+                <option value="">Select Position</option>
+                <option value="Participant">Participant</option>
+                <option value="Winner">Winner</option>
+                <option value="Runner-up">Runner-up</option>
+            </select>
+            <button type="submit" class="btn-generate">Generate Certificate</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Participant</th>
+                <th>Event</th>
+                <th>Position</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="certTable">
+            <tr>
+                <td>Shubhanu Soni</td>
+                <td>Hackathon 2025</td>
+                <td>Winner</td>
+                <td><button class="btn-download">Download</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<footer>
+    © 2025 College Event Manager | All Rights Reserved
+</footer>
+
+<script>
+document.getElementById("certForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Certificate Generated Successfully!");
+});
+</script>
+
+</body>
+</html>
