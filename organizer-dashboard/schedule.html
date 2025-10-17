@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create Event - Details</title>
+<title>Create Event - Schedule</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 <style>
   body { font-family: 'Inter', sans-serif; background: #f5f7fa; padding: 30px; }
@@ -17,21 +17,18 @@
 <body>
 
 <div class="container">
-  <h2>Create Event - Step 1: Details</h2>
-  <form action="schedule.html" method="get">
-    <label>Event Name</label>
-    <input type="text" name="eventName" required placeholder="Enter event name">
-    
-    <label>Venue</label>
-    <input type="text" name="venue" required placeholder="Enter venue">
+  <h2>Create Event - Step 2: Schedule</h2>
+  <form action="create-event-media.html" method="get">
+    <label>Start Time</label>
+    <input type="time" name="startTime" required>
 
-    <label>Date</label>
-    <input type="date" name="date" required>
+    <label>End Time</label>
+    <input type="time" name="endTime" required>
 
-    <label>Description</label>
-    <textarea name="description" rows="4" placeholder="Write a short description"></textarea>
+    <label>Agenda / Sessions</label>
+    <textarea name="agenda" rows="4" placeholder="Write session details"></textarea>
 
-    <button type="submit" class="btn" onclick="location.href='schedule.html'">Next Step →</button>
+    <button type="submit" class="btn" onclick="location.href='media.html'">Next Step →</button>
   </form>
 </div>
 
