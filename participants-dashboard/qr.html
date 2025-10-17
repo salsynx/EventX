@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Confirmation - College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: linear-gradient(135deg, #cb4f11, #2575fc); color: #333; }
+
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 20px 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-radius: 12px; margin: 20px 50px;
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: #fff; }
+    header nav a { margin-left: 25px; color: #fff; font-weight: 500; transition: 0.3s; text-decoration: none; }
+    header nav a:hover { color: #ffdd57; }
+
+    .confirmation-container {
+        max-width: 700px;
+        background: #fff;
+        margin: 80px auto;
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+        text-align: center;
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .confirmation-container h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 32px;
+        color: #222;
+        margin-bottom: 20px;
+    }
+
+    .confirmation-container p {
+        color: #555;
+        font-size: 16px;
+        margin-bottom: 25px;
+        line-height: 1.6;
+    }
+
+    .qr-box {
+        background: #f8f9ff;
+        border: 2px dashed #2575fc;
+        border-radius: 16px;
+        padding: 25px;
+        display: inline-block;
+        margin: 20px 0;
+    }
+
+    .qr-box img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .btn {
+        padding: 12px 30px;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #ff6a00, #ee0979);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        margin: 10px;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px 0;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        margin-top: 60px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Manager</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Events</a>
+        <a href="#">Dashboard</a>
+        <a href="#">Logout</a>
+    </nav>
+</header>
+
+<div class="confirmation-container">
+    <h2>🎉 Registration Confirmed!</h2>
+    <p>Thank you for registering for <strong>TechFest 2026</strong>.<br>
+    Please present the following QR code at the event entrance for quick check-in.</p>
+
+    <div class="qr-box">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=TechFest2026-User12345" alt="QR Code">
+    </div>
+
+    <p><strong>Participant Name:</strong> Salman Ansari<br>
+       <strong>Event Date:</strong> March 15, 2026<br>
+       <strong>Venue:</strong> Main Auditorium</p>
+
+    <button class="btn">Download QR</button>
+    <button class="btn">Go to Dashboard</button>
+</div>
+
+<footer>
+    © 2025 College Event Manager | Privacy | Terms
+</footer>
+
+</body>
+</html>

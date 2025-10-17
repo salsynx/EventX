@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Attendance Log - College Event Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
+    body { background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); color: #fff; }
+
+    header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 20px 50px; background: rgba(255,255,255,0.1); backdrop-filter: blur(12px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3); border-radius: 14px; margin: 20px 50px;
+    }
+    header h1 { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 28px; color: #fff; }
+    header nav a { margin-left: 25px; color: #fff; font-weight: 500; transition: 0.3s; text-decoration: none; }
+    header nav a:hover { color: #ffeb3b; }
+
+    .container {
+        max-width: 1100px;
+        margin: 80px auto;
+        background: rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 40px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    h2 {
+        font-family: 'Poppins', sans-serif;
+        font-size: 30px;
+        margin-bottom: 25px;
+        letter-spacing: 1px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: left;
+    }
+
+    th {
+        background: rgba(255,255,255,0.2);
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+        background: rgba(255,255,255,0.08);
+    }
+
+    tr:hover {
+        background: rgba(255,255,255,0.15);
+        transition: 0.3s;
+    }
+
+    td {
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .status-present {
+        color: #00ff99;
+        font-weight: bold;
+    }
+
+    .status-absent {
+        color: #ff5252;
+        font-weight: bold;
+    }
+
+    .btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        font-weight: 600;
+        background: linear-gradient(135deg, #06beb6, #48b1bf);
+        color: #fff;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        margin-top: 25px;
+    }
+
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+    }
+
+    footer {
+        text-align: center;
+        padding: 30px 0;
+        background: rgba(255,255,255,0.1);
+        color: #fff;
+        margin-top: 60px;
+        border-radius: 12px 12px 0 0;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>College Event Manager</h1>
+    <nav>
+        <a href="#">Dashboard</a>
+        <a href="#">Events</a>
+        <a href="#">Reports</a>
+        <a href="#">Logout</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>📋 Attendance Log</h2>
+    <p>View and manage attendance for registered participants.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Participant Name</th>
+                <th>Event</th>
+                <th>Time In</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>01</td>
+                <td>Shiv Shankar Sarkar</td>
+                <td>Hackathon 2025</td>
+                <td>10:05 AM</td>
+                <td class="status-present">Present</td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Priya Singh</td>
+                <td>Hackathon 2025</td>
+                <td>–</td>
+                <td class="status-absent">Absent</td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>Shubhanshu Soni</td>
+                <td>Guest Lecture</td>
+                <td>11:45 AM</td>
+                <td class="status-present">Present</td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Neha Verma</td>
+                <td>AI Workshop</td>
+                <td>–</td>
+                <td class="status-absent">Absent</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button class="btn">Download Report</button>
+</div>
+
+<footer>
+    © 2025 College Event Manager | Attendance Reports | Admin Panel
+</footer>
+
+</body>
+</html>
